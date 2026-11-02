@@ -38,11 +38,39 @@ filterBtns.forEach((btn) => {
     cards.forEach((c) => {
       const show = f === "all" || c.dataset.category === f;
       c.hidden = !show;
-      if (show) visible++;
+      if (show) {
+        visible++;
+        // Soft filter entrance animation
+        c.classList.remove("filter-anim");
+        void c.offsetWidth; // trigger reflow
+        c.classList.add("filter-anim");
+      }
     });
     emptyMsg.hidden = visible > 0;
   });
 });
+
+/* ============ SCROLL REVEAL ============ */
+if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  const revealTargets = document.querySelectorAll(
+    ".section h2, .filters, .card, .about-grid > div, .contact-grid > div, #contact-form"
+  );
+  revealTargets.forEach((el) => el.classList.add("reveal"));
+
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          obs.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+  );
+
+  revealTargets.forEach((el) => observer.observe(el));
+}
 
 /* ============ CONTACT FORM ============ */
 const form = document.getElementById("contact-form");
@@ -83,4 +111,3 @@ form.addEventListener("submit", (e) => {
 form.querySelectorAll("input, textarea").forEach((el) =>
   el.addEventListener("input", () => { if (el.getAttribute("aria-invalid") === "true") setError(el, ""); })
 );
-
