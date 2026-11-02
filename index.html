@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- TODO: replace [Full name] -->
+  <title>Alexa Mariz M Viray — Portfolio</title>
+  <meta name="description" content="Portfolio of Alexa Mariz M Viray, BS Information Technology student." />
+
+  <!-- Apply saved/system theme before paint to avoid a flash -->
+  <script>
+    (function () {
+      var saved = localStorage.getItem("theme");
+      var dark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+      document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ============ NAV ============ -->
+  <header class="site-header">
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="logo" href="#top" aria-label="Go to top">Alexa Mariz Marcelino Viray</a>
+      <ul class="nav-links">
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark mode"
+        aria-pressed="false">
+        <span aria-hidden="true" class="theme-icon"></span>
+      </button>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- ============ HERO ============ -->
+    <section class="hero container" id="top" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <p class="eyebrow hero-anim">BS IT student · 3rd year</p>
+        <!-- TODO: edit headline -->
+        <h1 id="hero-title" class="hero-anim">I build clean, useful things for the web.</h1>
+        <!-- TODO: edit intro -->
+        <p class="lead hero-anim">I’m a college IT student who enjoys developing websites. I’ve worked on web and
+          mobile projects in school, from database design to UI/UX design. This portfolio showcases my school
+          projects and my growth as an aspiring web developer.</p>
+        <div class="hero-actions hero-anim">
+          <a class="btn btn-primary" href="#projects">See my work</a>
+          <a class="btn btn-ghost" href="#contact">Get in touch</a>
+        </div>
+      </div>
+      <div class="hero-media hero-anim">
+        <img class="hero-photo" src="profile.jpg" alt="Photo of Alexa Mariz Viray" width="300" height="375" />
+      </div>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <section class="section container" id="projects" aria-labelledby="projects-title">
+      <h2 id="projects-title">Projects</h2>
+      <div class="filters" role="group" aria-label="Filter projects by category">
+        <button type="button" class="filter is-active" data-filter="all" aria-pressed="true"
+          aria-label="Show all projects">All</button>
+        <button type="button" class="filter" data-filter="web" aria-pressed="false"
+          aria-label="Show web projects">Web</button>
+        <button type="button" class="filter" data-filter="mobile" aria-pressed="false"
+          aria-label="Show mobile projects">Mobile</button>
+        <button type="button" class="filter" data-filter="design" aria-pressed="false"
+          aria-label="Show design projects">Design</button>
+      </div>
+
+      <ul class="grid" id="project-grid">
+        <!-- TODO: replace each card. Keep data-category as web | mobile | design -->
+        <li class="card" data-category="web">
+
+          <div class="card-body">
+            <h3>LUBACanFindIT</h3>
+            <p>A web and mobile system where citizens report road potholes and LGU staff verify, assign, and track
+              repairs until they are closed.</p>
+            <p class="stack">HTML · CSS · JavaScript, Supabase, Node.js, MySQL, Flutter</p>
+            <a class="card-link" href="#" aria-label="View Project One">View project <span
+                aria-hidden="true">→</span></a>
+          </div>
+        </li>
+        <li class="card" data-category="mobile">
+
+          <div class="card-body">
+            <h3>PACX CoopSurvey</h3>
+            <p>A web-based survey management system that enables cooperative members to participate in
+              surveys and allows cooperative staff to create surveys, monitor responses, determine survey results, and
+              generate reports.</p>
+            <p class="stack">HTML, CSS, JavaScript, PHP, MySQL</p>
+            <a class="card-link" href="#" aria-label="View Project Two">View project <span
+                aria-hidden="true">→</span></a>
+          </div>
+        </li>
+        <li class="card" data-category="design">
+          <div class="card-body">
+            <h3>PANANIM</h3>
+            <p>Application for crop trading and price-stabilizing supply chain system</p>
+            <p class="stack">Figma · Prototyping</p>
+            <a class="card-link" href="#" aria-label="View Project Three">View project <span
+                aria-hidden="true">→</span></a>
+          </div>
+        </li>
+      </ul>
+      <p class="empty" id="empty-msg" hidden>No projects in this category yet.</p>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="section container" id="about" aria-labelledby="about-title">
+      <h2 id="about-title">About</h2>
+      <div class="about-grid">
+        <div>
+          <!-- TODO: replace bio -->
+          <p class="bio">A student who enjoys building clean, practical websites and turning real-world problems into
+            working solutions. Through my school projects, I've worked on web and mobile systems, from planning the
+            database to designing the interface. I'm currently practicing HTML, CSS, and JavaScript to build things that
+            are easy to use and well made.</p>
+          <dl class="details">
+            <div>
+              <dt>Name</dt>
+              <dd>Alexa Mariz M Viray</dd>
+            </div>
+            <div>
+              <dt>Age</dt>
+              <dd>22</dd>
+            </div>
+            <div>
+              <dt>Birthday</dt>
+              <dd>September 11, 2004</dd>
+            </div>
+            <div>
+              <dt>Birthplace</dt>
+              <dd>Malolos, Bulacan</dd>
+            </div>
+            <div>
+              <dt>Education</dt>
+              <dd>BS Information Technology, 3rd year, Bulacan State University Main Campus</dd>
+            </div>
+          </dl>
+        </div>
+        <div class="skills">
+          <h3>Skills</h3>
+          <!-- TODO: edit skills -->
+          <div class="skill-group">
+            <h4>Languages</h4>
+            <ul class="chips">
+              <li>JavaScript</li>
+              <li>Java</li>
+              <li>SQL</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <h4>Frontend</h4>
+            <ul class="chips">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>React</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <h4>Backend / Database</h4>
+            <ul class="chips">
+              <li>Node.js</li>
+              <li>PHP</li>
+              <li>Supabase</li>
+              <li>MySQL</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <h4>Tools</h4>
+            <ul class="chips">
+              <li>Git</li>
+              <li>Antigravity</li>
+              <li>VS Code</li>
+              <li>Figma</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section container" id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">Contact</h2>
+      <div class="contact-grid">
+        <div>
+          <p class="bio">Have an opportunity or just want to say hi? Send a message.</p>
+          <!-- TODO: replace links -->
+          <ul class="links">
+            <li><a href="https://github.com/bulsu-amviray" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="2024105205@ms.bulsu.edu.ph" target="_blank" rel="noopener">BulSU Account</a></li>
+            <li><a href="alexam.viray11@gmail.com">Email</a></li>
+          </ul>
+        </div>
+        <form id="contact-form" novalidate>
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" autocomplete="name" aria-describedby="name-error" />
+            <p class="error" id="name-error" role="alert"></p>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" aria-describedby="email-error" />
+            <p class="error" id="email-error" role="alert"></p>
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" aria-describedby="message-error"></textarea>
+            <p class="error" id="message-error" role="alert"></p>
+          </div>
+          <button class="btn btn-primary" type="submit" aria-label="Send message">Send message</button>
+          <p class="form-status" id="form-status" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Alexa Mariz M. Viray. All rights reserved.</p>
+      <a href="#top" aria-label="Back to top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
