@@ -111,3 +111,70 @@ form.addEventListener("submit", (e) => {
 form.querySelectorAll("input, textarea").forEach((el) =>
   el.addEventListener("input", () => { if (el.getAttribute("aria-invalid") === "true") setError(el, ""); })
 );
+
+/* ============ CURSOR MOVEMENT ANIMATION ============ */
+if (
+  window.matchMedia("(hover: hover) and (pointer: fine)").matches &&
+  !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+) {
+  const cursorDot = document.getElementById("cursor-dot");
+  const cursorRing = document.getElementById("cursor-ring");
+  const spotlight = document.getElementById("cursor-spotlight");
+
+  if (cursorDot && cursorRing && spotlight) {
+    let mouseX = -200, mouseY = -200;
+    let ringX = -200, ringY = -200;
+    let isVisible = false;
+
+    window.addEventListener("mousemove", (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+
+      if (!isVisible) {
+        cursorDot.classList.add("cursor-visible");
+        cursorRing.classList.add("cursor-visible");
+        spotlight.classList.add("cursor-visible");
+        ringX = mouseX;
+        ringY = mouseY;
+        isVisible = true;
+      }
+
+      cursorDot.style.left = mouseX + "px";
+      cursorDot.style.top = mouseY + "px";
+      spotlight.style.left = mouseX + "px";
+      spotlight.style.top = mouseY + "px";
+    });
+
+    document.addEventListener("mouseleave", () => {
+      cursorDot.classList.remove("cursor-visible");
+      cursorRing.classList.remove("cursor-visible");
+      spotlight.classList.remove("cursor-visible");
+      isVisible = false;
+    });
+
+    // Smooth inertia follower loop for trailing ring
+    function renderRing() {
+      ringX += (mouseX - ringX) * 0.18;
+      ringY += (mouseY - ringY) * 0.18;
+      cursorRing.style.left = ringX + "px";
+      cursorRing.style.top = ringY + "px";
+      requestAnimationFrame(renderRing);
+    }
+    requestAnimationFrame(renderRing);
+
+    // Expand & highlight ring on interactive elements
+    const hoverTargets = document.querySelectorAll(
+      "a, button, input, textarea, .card, .chips li, .filter, .theme-toggle"
+    );
+    hoverTargets.forEach((target) => {
+      target.addEventListener("mouseenter", () => {
+        cursorRing.classList.add("is-hovering");
+        cursorDot.classList.add("is-hovering");
+      });
+      target.addEventListener("mouseleave", () => {
+        cursorRing.classList.remove("is-hovering");
+        cursorDot.classList.remove("is-hovering");
+      });
+    });
+  }
+}
